@@ -46,6 +46,10 @@ const Form = styled.form`
     font-weight: 600;
     padding: 0.5rem 1.2rem;
   }
+  button:hover {
+    cursor: pointer;
+    background: #9a0000;
+  }
   fieldset {
     border: 0;
     padding: 0;
