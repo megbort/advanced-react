@@ -30,6 +30,7 @@ const HeaderStyles = styled.header`
     display: grid;
     grid-template-columns: 1fr auto;
     border-bottom: 1px solid var(--black, black);
+    padding: 0 10px;
   }
 `;
 

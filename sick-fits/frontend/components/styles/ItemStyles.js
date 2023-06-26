@@ -12,6 +12,9 @@ const ItemStyles = styled.div`
     height: 400px;
     object-fit: cover;
   }
+  button {
+    color: var(--black);
+  }
   button:hover {
     cursor: pointer;
     text-decoration: underline;
@@ -22,8 +25,10 @@ const ItemStyles = styled.div`
     flex-grow: 1;
     padding: 0 3rem;
     font-size: 1.5rem;
+    color: var(--black);
   }
   .buttonList {
+    color: black;
     display: grid;
     text-align: center;
     width: 100%;
