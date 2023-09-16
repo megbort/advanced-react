@@ -2,7 +2,7 @@
 export default function formatMoney(amount = 0) {
   const options = {
     style: 'currency',
-    currency: 'CAD',
+    currency: 'USD',
     minimumFractionDigits: 2,
   };
 
