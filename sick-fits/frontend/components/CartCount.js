@@ -18,6 +18,7 @@ const AnimationStyles = styled.span`
 
   .count {
     display: block;
+    width: 40px;
     position: relative;
     transform-origin: center bottom;
     transition: transform 0.4s ease-in-out;

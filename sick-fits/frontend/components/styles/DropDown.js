@@ -36,11 +36,15 @@ const SearchStyles = styled.div`
   position: relative;
   input {
     width: 100%;
+    margin-top: 2px;
     padding: 10px;
     border: 0;
     font-size: 2rem;
     &.loading {
       animation: ${glow} 0.5s ease-in-out infinite alternate;
+    }
+    &:focus {
+      outline: none;
     }
   }
 `;
