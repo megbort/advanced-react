@@ -1,7 +1,5 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable react/jsx-props-no-spreading */
 import { ApolloProvider } from '@apollo/client';
-import PropTypes from 'prop-types';
 import NProgress from 'nprogress';
 import Router from 'next/router';
 import Page from '../components/Page';
@@ -11,7 +9,7 @@ import { CartStateProvider } from '../lib/cartState';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
-Router.events.on('routeChangeError', () => NProgress.error());
+Router.events.on('routeChangeError', () => NProgress.done());
 
 function MyApp({ Component, pageProps, apollo }) {
   return (
@@ -24,11 +22,6 @@ function MyApp({ Component, pageProps, apollo }) {
     </ApolloProvider>
   );
 }
-
-MyApp.propTypes = {
-  Component: PropTypes.any,
-  pageProps: PropTypes.any,
-};
 
 MyApp.getInitialProps = async function ({ Component, ctx }) {
   let pageProps = {};

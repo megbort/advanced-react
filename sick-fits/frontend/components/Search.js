@@ -32,7 +32,7 @@ export default function Search() {
   const [findItems, { loading, data, error }] = useLazyQuery(
     SEARCH_PRODUCTS_QUERY,
     {
-      uri: 'http://localhost:3000/api/graphql',
+      uri: process.env.NEXT_PUBLIC_GRAPHGQL_SERVER,
       fetchPolicy: 'no-cache',
     }
   );
