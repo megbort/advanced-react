@@ -1,20 +1,21 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import {
-  integer,
-  relationship,
-  select,
-  text,
-  virtual,
-} from '@keystone-next/fields';
+/* eslint-disable */
+import { integer, text, relationship, virtual } from '@keystone-next/fields';
 import { list } from '@keystone-next/keystone/schema';
+import { isSignedIn, rules } from '../access';
 import formatMoney from '../lib/formatMoney';
 
 export const Order = list({
+  access: {
+    create: isSignedIn,
+    read: rules.canOrder,
+    update: () => false,
+    delete: () => false,
+  },
   fields: {
     label: virtual({
       graphQLReturnType: 'String',
       resolver(item) {
-        return `Order: ${formatMoney(item.total)}`;
+        return `${formatMoney(item.total)}`;
       },
     }),
     total: integer(),
