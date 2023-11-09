@@ -4,6 +4,7 @@ import { resetIdCounter, useCombobox } from 'downshift';
 import gql from 'graphql-tag';
 import debounce from 'lodash.debounce';
 import { useRouter } from 'next/dist/client/router';
+import { useMemo } from 'react';
 import { DropDown, DropDownItem, SearchStyles } from './styles/DropDown';
 
 const SEARCH_PRODUCTS_QUERY = gql`
@@ -29,6 +30,7 @@ const SEARCH_PRODUCTS_QUERY = gql`
 
 export default function Search() {
   const router = useRouter();
+
   const [findItems, { loading, data, error }] = useLazyQuery(
     SEARCH_PRODUCTS_QUERY,
     {
@@ -37,8 +39,14 @@ export default function Search() {
     }
   );
   const items = data?.searchTerms || [];
-  const searchProductsDebounce = debounce(findItems, 350);
+
+  const searchProductsDebounce = useMemo(
+    () => debounce(findItems, 350),
+    [findItems]
+  );
+
   resetIdCounter();
+
   const {
     isOpen,
     inputValue,
@@ -63,6 +71,7 @@ export default function Search() {
     },
     itemToString: (item) => item?.name || '',
   });
+
   return (
     <SearchStyles>
       <div {...getComboboxProps()}>
